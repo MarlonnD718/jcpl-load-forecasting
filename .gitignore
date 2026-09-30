@@ -1,0 +1,18 @@
+# Data - too large / not meant for version control, see README for setup
+data/raw/
+data/processed/
+*.pkl
+*.xlsb
+
+# Models
+models/*.pkl
+
+# Python
+__pycache__/
+*.pyc
+.ipynb_checkpoints/
+venv/
+.venv/
+
+# OS
+.DS_Store
