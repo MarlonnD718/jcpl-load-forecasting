@@ -39,7 +39,7 @@
 \vspace{2pt}
 {\fontsize{22}{26}\selectfont Team 3\par}
 \vspace{8pt}
-{\normalsize Aidan McGrath, Marlonn Debreuil, and Anirudh Ganesan\par}
+{\normalsize Aidan McGrath, Marlonn Dubreuil, and Anirudh Ganesan\par}
 \vspace{14pt}
 \end{center}
 ]
@@ -98,7 +98,7 @@ The proposal planned to use the NCSA Delta supercomputer because of dataset size
 
 \section{Methods}
 \subsection{Decision-tree pipeline}
-One command builds the dataset and runs the models for any rate class. The code is split into loaders, feature building, model training, and a command-line runner, and it saves cleaned data and models as pickle files. Code: github.com/MarlonnD718/jcpl-load-forecasting. \todo{this code is in a separate repository from the team repository; copy it in or confirm which repository we submit.}
+One command builds the dataset and runs the models for any rate class. The code is split into loaders, feature building, model training, and a command-line runner, and it saves cleaned data and models as pickle files. The pipeline lives in the team repository (github.com/McGrath765353/DS340W---Team-3) under \code{src/}, next to the LSTM script. \todo{copy the \code{src/} folder from github.com/MarlonnD718/jcpl-load-forecasting into the team repository.}
 
 \textit{Features (19).} Temperature, dew point, humidity, a weekday flag, a weekend flag, 12 month flags, a holiday flag, and hour of day. Weather is joined to load on the hourly timestamp; daily calendar flags are repeated across each day's 24 hours.
 
@@ -179,14 +179,15 @@ Clean and match load and Newark weather & Done \\
 Decision tree trained on weather features (Week 6) & Done \\
 Chronological held-out evaluation & Done \\
 Pickle the model and load it later (Week 6) & Done; reload gives identical predictions \\
-Add customer counts and net generation (Weeks 6--9) & Not started \\
+Add customer counts (Weeks 6--9) & Not started \\
 Compare against weather-only baseline (Week 9) & Planned \\
+Add solar, gas, coal series & Future expansion \\
 Meeting with Daniel Walker & \todo{report outcome} \\
 \bottomrule
 \end{tabular}
 \end{table}
 
-One gap affects Weeks 6--9. The proposal names solar, natural gas, and coal generation, but the energy files provided cover solar (small-scale and utility-scale), wind, and biomass, plus customer accounts. There are no natural gas or coal files. All are New Jersey monthly totals, not hourly Newark data, so they can only add slow trend context. We need to obtain gas and coal series or agree with Mr.\ Walker on what to use instead.
+The proposal also names solar, natural gas, and coal generation. We have scoped these as future expansion after the initial model is complete. The energy files provided cover solar (small-scale and utility-scale), wind, and biomass, plus customer accounts, but no natural gas or coal. All are New Jersey monthly totals, not hourly Newark data, so they can only add slow trend context. We will source gas and coal series, or agree with Mr.\ Walker on substitutes, when we reach that stage.
 
 \subsection{Limitations}
 \begin{itemize}
@@ -201,7 +202,7 @@ One gap affects Weeks 6--9. The proposal names solar, natural gas, and coal gene
 \begin{enumerate}[leftmargin=1.6em]
 \item Run all 11 classes with both models; report average error and the best and worst classes.
 \item Use several test windows across seasons, and the same split, training data, and metrics for the tree and the LSTM.
-\item Add customer counts and the available generation series (Weeks 6--9); resolve the gas and coal gap.
+\item Add customer counts (Weeks 6--9). Solar, gas, and coal series are future expansion after the initial model is complete.
 \item Tune tree depth with time-ordered validation, then try random forest and gradient boosting.
 \item Screen features with Spearman rank correlation and test rank-transformed inputs.
 \item Extend the LSTM into a CRNN on one class and give it calendar inputs; compare with the trees.
